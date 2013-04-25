@@ -30,16 +30,18 @@
     .container
       .content
         .row
-          .span9
-            = yield
-          .span3
-            .well.sidebar-nav
-              %h3 Providers
-              %ul.nav.nav-list
-                - if !user_signed_in?
+          - if !user_signed_in?
+            .span9
+              = yield
+            .span3
+              .well.sidebar-nav
+                %h3 Providers
+                %ul.nav.nav-list
                   %li= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
                   %li= link_to "Sign in with Vkontakte", user_omniauth_authorize_path(:vkontakte)
-    
+          - else
+            .span12
+              = yield
       %footer
         %p © Company 2012
     = javascript_include_tag "application"
