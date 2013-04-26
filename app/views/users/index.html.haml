@@ -3,7 +3,6 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:friends)
       %th= model_class.human_attribute_name(:username)
       %th= model_class.human_attribute_name(:nickname)
       %th= model_class.human_attribute_name(:provider)
@@ -13,7 +12,6 @@
   %tbody
     - @users.each do |user|
       %tr
-	%td= user.friends
         %td= link_to user.username, user.url
         %td= user.nickname
         %td= user.provider
