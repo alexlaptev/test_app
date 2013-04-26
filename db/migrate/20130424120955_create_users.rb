@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :nickname
       t.string :provider
       t.string :url
+      t.string :authtoken    
 
       t.timestamps
     end

@@ -17,4 +17,6 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
-
+gem 'vkontakte_api'
+gem 'hashie', '~> 1.2'
+gem 'koala'

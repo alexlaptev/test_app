@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
+    @vk = VkontakteApi::Client.new(current_user.authentication_token)
+    @friends = @vk.friends.get(fields: [:first_name, :last_name, :screen_name])
+
     @user = User.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
