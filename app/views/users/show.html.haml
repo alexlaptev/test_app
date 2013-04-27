@@ -14,8 +14,12 @@
   = @user.url
 
 %ul
-- @friends.each do |friend|
-  %li= link_to "#{friend.first_name } #{friend.last_name }", "http://vk.com/#{friend.screen_name}", :confirm => "Are you sure?"
+- if @user.provider == 'vkontakte'
+  - @friends.each do |friend|
+    %li= link_to "#{friend.first_name } #{friend.last_name }", "http://vk.com/#{friend.screen_name}", :confirm => "Are you sure?"
+- else
+  - @friends.each do |friend|
+    %li= link_to "#{friend['name'].to_s}", "#{friend['link'].to_s}", :confirm => "Are you sure?"
 
 \|
 = link_to 'Back', users_path

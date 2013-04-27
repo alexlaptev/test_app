@@ -13,8 +13,13 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
 
-    @vk = VkontakteApi::Client.new(current_user.authentication_token)
-    @friends = @vk.friends.get(fields: [:first_name, :last_name, :screen_name])
+    if current_user.provider = "vkontakte"
+      @vk = VkontakteApi::Client.new(current_user.authtoken)
+      @friends = @vk.friends.get(fields: [:first_name, :last_name, :screen_name])
+    else  
+      @fb = Koala::Facebook::API.new(current_user.authtoken)
+      @friends = @fb.get_connections("me", "friends", :fields => 'name,link')
+    end
 
     @user = User.find(params[:id])
     respond_to do |format|

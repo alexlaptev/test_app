@@ -14,7 +14,7 @@
   = @user.url
 
 %ul
-  - @friends.each do |friend|
+- @friends.each do |friend|
   %li= link_to "#{friend.first_name } #{friend.last_name }", "http://vk.com/#{friend.screen_name}", :confirm => "Are you sure?"
 
 \|
