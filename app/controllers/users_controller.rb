@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-
-    if current_user.provider = "vkontakte"
+    @user = User.find(params[:id])
+    if @user.provider == "vkontakte"
       @vk = VkontakteApi::Client.new(current_user.authtoken)
       @friends = @vk.friends.get(fields: [:first_name, :last_name, :screen_name])
     else  
@@ -21,7 +21,6 @@ class UsersController < ApplicationController
       @friends = @fb.get_connections("me", "friends", :fields=>"name,username,link")
     end
 
-    @user = User.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
