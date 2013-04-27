@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(:version => 20130424121115) do
     t.string   "provider"
     t.string   "url"
     t.string   "authtoken"
-    t.string   "authtoken1"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false
