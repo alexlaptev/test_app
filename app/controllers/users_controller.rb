@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       @vk = VkontakteApi::Client.new(current_user.authtoken)
       @friends = @vk.friends.get(fields: [:first_name, :last_name, :screen_name])
       @friends_online = @friends.select { |friend| friend.online == 1 }
-      @audio = @vk.audio.get()
+      @audio = @vk.audio.get(album_id: '15153114')
 
     else  
       @fb = Koala::Facebook::API.new(current_user.authtoken)
