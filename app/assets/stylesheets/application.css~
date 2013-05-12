@@ -12,4 +12,4 @@
  *= require_tree .
  */
 
-.offline, .online, .audio {float: left; overflow: hidden; width: 20%;} 
+.offline, .online, .audio {float: left; overflow: hidden; width: 33%;} 

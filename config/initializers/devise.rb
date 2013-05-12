@@ -8,7 +8,7 @@ Devise.setup do |config|
 
   config.omniauth :facebook, '447996031954441', '1162e2ba2740ceb5abab659dff8cb119', :scope => "read_friendlists"
 
-  config.omniauth :vkontakte, '3600329', 'ZVse0Z321FB6Xi1hiH6t', :scope => "friends, status"
+  config.omniauth :vkontakte, '3600329', 'ZVse0Z321FB6Xi1hiH6t', :scope => "audio, friends, status"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"

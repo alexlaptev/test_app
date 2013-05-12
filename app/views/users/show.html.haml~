@@ -1,9 +1,5 @@
 %p#notice= notice
 
-%ul.nav.nav-list
-  %li= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
-  %li= link_to "Sign in with Vkontakte", user_omniauth_authorize_path(:vkontakte)
-
 %p
   %b Username:
   = @user.username
@@ -17,11 +13,23 @@
   %b Url:
   = @user.url
 
-%ul
-  - @friendsvk.each do |friend|
-    %li= link_to "#{friend.first_name } #{friend.last_name }", "http://vk.com/#{friend.screen_name}", :confirm => "Are you sure?"
-  - @friendsfb.each do |friend|
-    %li= link_to "#{friend['name'].to_s}", "#{friend['link'].to_s}", :confirm => "Are you sure?"
+%ul.offline
+  - if @user.provider == 'vkontakte'
+    - @friends.each do |friend|
+      %li= link_to "#{friend.first_name } #{friend.last_name }", "http://vk.com/#{friend.screen_name}", :confirm => "Are you sure?"
 
-\|
-= link_to 'Back', users_path
+  - else
+    - @friends.each do |friend|
+      %li= link_to "#{friend['name'].to_s}", "#{friend['link'].to_s}", :confirm => "Are you sure?"
+
+
+%ul.online
+  - if @user.provider == 'vkontakte'
+    - @friends_online.each do |friend|
+      %li= link_to "#{friend.first_name } #{friend.last_name }", "http://vk.com/#{friend.screen_name}", :confirm => "Are you sure?"
+
+
+%ul
+  - if @user.provider == 'vkontakte'
+    - @audio.each do |a|
+      %li= link_to "#{a.title }", "#{a.url}"
